@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "activevocab-app",
-    "slug": "activevocab-app",
+    "name": "lexiact",
+    "slug": "lexiact",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
