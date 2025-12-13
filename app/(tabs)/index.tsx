@@ -1,32 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function TabOneScreen() {
   return (
-    <View className="flex-1 items-center justify-center bg-background-light dark:bg-background-dark">
-      <Text className="text-typography-950 dark:text-typography-50 text-2xl font-bold">Tab One</Text>
-      <View className="my-4 h-px w-4/5 bg-typography-200 dark:bg-typography-700" />
-      <Text className="text-primary-500 font-serif text-lg">Primary Color (Serif Font)</Text>
-      <Text className="text-secondary-500 font-body text-lg">Secondary Color (Body Font)</Text>
-      <Text className="text-tertiary-500 font-rounded text-lg">Tertiary Color (Rounded Font)</Text>
-      <Text className="text-typography-950 text-lg">Typography 950</Text>
-    </View>
+    <ScrollView className="flex-1 bg-background-light p-4">
+      <Text className="text-typography-950 text-2xl font-bold font-serif mb-6">My Vocabulary</Text>
+      
+      <Link href="/word/1" asChild>
+        <View className="bg-background-card p-4 rounded-3xl shadow-soft-1 mb-4">
+          <Text className="text-xl font-serif text-typography-950 mb-1">Serendipity</Text>
+          <Text className="text-typography-500 text-sm" numberOfLines={1}>The occurrence and development of events by chance...</Text>
+          <View className="flex-row mt-2">
+            <View className="bg-primary-50 px-2 py-1 rounded-full mr-2">
+               <Text className="text-xs text-primary-700 font-bold">noun</Text>
+            </View>
+          </View>
+        </View>
+      </Link>
+
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  // Original styles, kept for reference but largely replaced by Tailwind classes
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
