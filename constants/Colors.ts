@@ -1,19 +1,19 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const tintColorLight = '#5856D6'; // Secondary color for active tab
+const tintColorDark = '#5856D6';
 
 export default {
   light: {
-    text: '#000',
-    background: '#fff',
+    text: '#1C1C1E',
+    background: '#F2F2F7',
     tint: tintColorLight,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#AEAEB2',
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#fff',
-    background: '#000',
+    text: '#F2F2F7',
+    background: '#1C1C1E',
     tint: tintColorDark,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#48484A',
     tabIconSelected: tintColorDark,
   },
 };

@@ -18,18 +18,17 @@ We utilize a **Feature-Based Architecture**. Code is organized by **business dom
 │   ├── (tabs)/          # Tab navigation groups
 │   ├── _layout.tsx      # Root layouts and providers
 │   └── [id].tsx         # Dynamic routes
-├── src/
-│   ├── components/      # Shared "Dumb" UI components (Global)
-│   │   ├── ui/          # Gluestack primitives (customized)
-│   │   └── Container.tsx
-│   ├── features/        # CORE BUSINESS LOGIC (The heart of the app)
-│   │   ├── auth/        # Example Feature
-│   │   │   ├── components/  # Components specific to Auth
-│   │   │   ├── hooks/       # Hooks specific to Auth
-│   │   │   ├── api/         # API calls specific to Auth
-│   │   │   ├── types.ts     # Types specific to Auth
-│   │   │   └── index.ts     # Public API for other features
-│   ├── hooks/           # Global/Shared hooks (e.g., useTheme, useOnlineStatus)
+├── components/      # Shared "Dumb" UI components (Global)
+│   ├── ui/          # Gluestack primitives (customized)
+│   └── Container.tsx
+├── features/        # CORE BUSINESS LOGIC (The heart of the app)
+│   ├── auth/        # Example Feature
+│   │   ├── components/  # Components specific to Auth
+│   │   ├── hooks/       # Hooks specific to Auth
+│   │   ├── api/         # API calls specific to Auth
+│   │   ├── types.ts     # Types specific to Auth
+│   │   └── index.ts     # Public API for other features
+├── hooks/           # Global/Shared hooks (e.g., useTheme, useOnlineStatus)
 │   ├── lib/             # 3rd party configurations (axios, firebase, supabase)
 │   ├── store/           # Global state definitions
 │   ├── types/           # Global TS types (env.d.ts, api-response.ts)
@@ -43,7 +42,7 @@ Files in app/ must remain minimal. They should serve as Controllers that:
 
 Parse URL parameters.
 
-Render a top-level Layout or Screen component from src/features/.
+Render a top-level Layout or Screen component from /features/.
 
 DO NOT write complex useEffect or business logic inside app/.
 
@@ -51,7 +50,7 @@ Example app/home.tsx:
 ```
 TypeScript
 
-import { HomeScreen } from '@/src/features/feed/screens/HomeScreen';
+import { HomeScreen } from '@/features/feed/screens/HomeScreen';
 
 export default function Page() {
   return <HomeScreen />;
@@ -59,9 +58,9 @@ export default function Page() {
 ```
 
 ### B. Component Classification
-UI Components (src/components): Purely presentational. Props in, UI out. No API calls.
+UI Components (components): Purely presentational. Props in, UI out. No API calls.
 
-Feature Components (src/features/*/components): Can contain domain logic but should prioritize composition.
+Feature Components (features/*/components): Can contain domain logic but should prioritize composition.
 
 Screens: Composition roots that wire up Hooks to UI components.
 
@@ -108,7 +107,7 @@ export const MyComponent = ({ title, isActive = false }: Props) => {
 };
 ```
 ## 5. Data Fetching & State
-API Layer: All API calls must exist in src/features/*/api. Do not call fetch directly inside components.
+API Layer: All API calls must exist in features/*/api. Do not call fetch directly inside components.
 
 TanStack Query (Recommended): Use custom hooks to wrap queries.
 
@@ -117,7 +116,7 @@ useUserQuery not useQuery('user', ...) inside the UI.
 ## 6. Implementation Checklist for AI Generation
 When generating code, ensure:
 
-Imports use absolute paths alias @/ (e.g., import { Button } from '@/src/components/ui').
+Imports use absolute paths alias @/ (e.g., import { Button } from '@/components/ui').
 
 NativeWind classes are strings inside className.
 
